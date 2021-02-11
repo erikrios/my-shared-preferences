@@ -1,6 +1,7 @@
 package com.erikriosetiawan.mysharedpreferences.preferences
 
 import android.content.Context
+import androidx.core.content.edit
 import com.erikriosetiawan.mysharedpreferences.models.UserModel
 
 internal class UserPreference(context: Context) {
@@ -16,13 +17,12 @@ internal class UserPreference(context: Context) {
     private val preferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     fun setUser(value: UserModel) {
-        val editor = preferences.edit().apply {
+        preferences.edit {
             putString(NAME, value.name)
             putString(EMAIL, value.email)
             putInt(AGE, value.age)
             putString(PHONE_NUMBER, value.phoneNumber)
             putBoolean(LOVE_MU, value.isLove)
-            apply()
         }
     }
 

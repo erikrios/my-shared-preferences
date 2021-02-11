@@ -2,11 +2,11 @@ package com.erikriosetiawan
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.isDigitsOnly
 import com.erikriosetiawan.mysharedpreferences.databinding.ActivityFormUserPreferenceBinding
 import com.erikriosetiawan.mysharedpreferences.models.UserModel
 import com.erikriosetiawan.mysharedpreferences.preferences.UserPreference
@@ -93,7 +93,7 @@ class FormUserPreferenceActivity : AppCompatActivity(), View.OnClickListener {
                 return
             }
 
-            if (!TextUtils.isDigitsOnly(phoneNo)) {
+            if (!phoneNo.isDigitsOnly()) {
                 binding.etPhone.error = FIELD_DIGIT_ONLY
                 return
             }
